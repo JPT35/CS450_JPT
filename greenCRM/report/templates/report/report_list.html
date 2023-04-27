@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Reports{% endblock %}
+
+{% block content %}
+    <div class = "py-6 px-6">
+        <h1 class ="mb-4 text-xl">Reports</h1>
+
+{% if object_list %}
+    <div class="mt-6 flex justify-between">
+        <p class="py-4 px-2 bg-orange-200 font-semibold w-full">Date Created</p>
+        <p class="py-4 px-2 bg-orange-200 font-semibold w-full">File Name</p>
+        <p class="py-4 px-2 bg-orange-200 font-semibold w-full">Action</p>
+    </div>
+
+    {% for report in object_list %}
+        <div class="flex justify-between">  
+            <p class="py-2 px-2 w-full {% cycle 'bg-gray-100' '' %}">{{ report.created_at }}</p>
+            <p class="py-2 px-2 w-full {% cycle 'bg-gray-100' '' %}">{{ report.file_name }}</p>
+            <p class="py-2 px-2 w-full {% cycle 'bg-gray-100' '' %}">
+        </div>
+    {% endfor %}
+{% else %}
+    <p class="px-2">No reports in database</p>
+{% endif %}
+</div>
+{% endblock %}

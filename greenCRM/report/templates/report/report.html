@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Report{% endblock %}
+
+{% block content %}
+    <div class="container mx-auto py-8">
+        <h1 class="text-3xl font-bold mb-8">Sales Report</h1>
+        <img src="{{ chart_data }}" alt="Sales chart" class="mb-8">
+
+        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in gravida purus. Nulla facilisi. Aenean facilisis dolor at urna commodo lobortis. Duis rutrum tellus justo, ac consectetur libero suscipit non. Ut vel eros sit amet quam luctus vestibulum id nec sapien.</p>
+
+        <table class="table-auto w-full mb-8">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2">Date</th>
+                    <th class="px-4 py-2">Sales Rep</th>
+                    <th class="px-4 py-2">Total Order Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for report in reports %}
+                    <tr>
+                        <td class="border px-4 py-2">{{ report.date }}</td>
+                        <td class="border px-4 py-2">{{ report.sales_rep }}</td>
+                        <td class="border px-4 py-2">${{ report.total_order_value }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
